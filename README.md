@@ -29,3 +29,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Repository Git
 
 https://github.com/jollivetc/angularCRM-November
+
+
+## Portability d'un component
+
+[standalone-components](https://angular.io/guide/standalone-components)
