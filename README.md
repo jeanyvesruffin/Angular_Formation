@@ -34,3 +34,7 @@ https://github.com/jollivetc/angularCRM-November
 ## Portability d'un component
 
 [standalone-components](https://angular.io/guide/standalone-components)
+
+## Truc et astuce
+
+[Emmet](https://docs.emmet.io/cheat-sheet/)

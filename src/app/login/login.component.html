@@ -1,0 +1,23 @@
+<div class="login-form-container">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <p>
+      <label for="login">Login</label>
+      <input type="text" id="login" formControlName="login">
+      <span class="help-block" *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.invalid">
+        <span *ngIf="loginForm.get('login')?.errors?.['required']">
+          Valeur invalide
+        </span>
+        <span *ngIf="loginForm.get('login')?.errors?.['minlength']">
+          3 caractère obligatoire sans $
+        </span>
+      </span>
+    </p>
+    <p>
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password">
+    </p>
+    <p>
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </p>
+  </form>
+</div>
