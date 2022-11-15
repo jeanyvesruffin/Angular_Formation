@@ -40,7 +40,7 @@ describe('HelpComponent', () => {
     const loginElement = fixture.nativeElement.querySelector('input#login');
     const passwordElement = fixture.nativeElement.querySelector('input#password');
 // setting a value
-    loginElement.value = 'myLogin';
+    loginElement.value = 'login';
     passwordElement.value = 'password';
 // trigger an event
     loginElement.dispatchEvent(new Event('input'));
