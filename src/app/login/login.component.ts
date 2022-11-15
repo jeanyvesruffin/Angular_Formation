@@ -8,12 +8,22 @@ import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} f
 })
 export class LoginComponent implements OnInit {
 
+  errorLogin = {
+    required: 'valeur obligatoire',
+    minlength: '3 caractères sont obligatoire'
+  }
+  errorPassword={
+    required: 'valeur obligatoire',
+    no$InPassword: '3 caractères sont obligatoire'
+  }
+
+
   loginForm: FormGroup;
 
   constructor() {
     this.loginForm = new FormGroup({
       login: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      password: new FormControl('', [Validators.required,no$InPassword]),
+      password: new FormControl('', [Validators.required, no$InPassword]),
     })
   }
 

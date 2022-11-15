@@ -1,18 +1,14 @@
 <div class="login-form-container">
   <form [formGroup]="loginForm" (ngSubmit)="login()">
+
     <p>
       <mat-form-field>
         <mat-label for="login">Login</mat-label>
         <input matInput type="text" id="login" formControlName="login">
       </mat-form-field>
-      <span class="help-block" *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.invalid">
-        <span *ngIf="loginForm.get('login')?.errors?.['required']">
-          Valeur invalide
-        </span>
-        <span *ngIf="loginForm.get('login')?.errors?.['minlength']">
-          3 caractère obligatoire
-        </span>
-      </span>
+      <crm-help [field]="loginForm.get('login')!"
+                [messages]=errorLogin>
+      </crm-help>
     </p>
 
     <p>
@@ -20,14 +16,9 @@
         <mat-label for="password">Password</mat-label>
         <input matInput type="password" id="password" formControlName="password">
       </mat-form-field>
-      <span class="help-block" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
-        <span *ngIf="loginForm.get('password')?.errors?.['required']">
-          Il faut un mot de passe
-        </span>
-        <span *ngIf="loginForm.get('password')?.errors?.['no$InPassword']">
-          Il ne faut pas de $ dans le mot de passe
-        </span>
-      </span>
+      <crm-help [field]="loginForm.get('password')!"
+                [messages]=errorPassword>
+      </crm-help>
     </p>
 
     <p>
