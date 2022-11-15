@@ -20,6 +20,14 @@
         <mat-label for="password">Password</mat-label>
         <input matInput type="password" id="password" formControlName="password">
       </mat-form-field>
+      <span class="help-block" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+        <span *ngIf="loginForm.get('password')?.errors?.['required']">
+          Il faut un mot de passe
+        </span>
+        <span *ngIf="loginForm.get('password')?.errors?.['no$InPassword']">
+          Il ne faut pas de $ dans le mot de passe
+        </span>
+      </span>
     </p>
 
     <p>
