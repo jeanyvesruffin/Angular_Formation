@@ -10,7 +10,9 @@ import {AppMaterialModule} from './app-material.module';
 import {DummyComponent} from './component/dummy/dummy.component';
 import {HelpComponent} from './component/help/help.component';
 import {HomeComponent} from './home/home.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {JWTInterceptorService} from "./common/jwtinterceptor.service";
+import { PhonePipe } from './common/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     DummyComponent,
     HelpComponent,
-    HomeComponent
+    HomeComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     AppMaterialModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: JWTInterceptorService, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
