@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthentificationService} from "./authentification.service";
 import {Router} from "@angular/router";
+import {User} from "./model/user";
 
 @Component({
   selector: 'crm-login',
@@ -36,12 +37,16 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.loginForm)
     console.log('submit', this.loginForm.value);
-    const user = this.authent.authentUser(this.loginForm.value.login,
-      this.loginForm.value.password);
-    console.log('authent.authentUser', user);
-    if (user) {
-      this.router.navigateByUrl('/home');
-    }
+    this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password).subscribe({
+      next: (user: User) => {
+        this.router.navigateByUrl('/home');
+      },
+      error: (error: Error) => {
+        alert(error)
+      },
+      complete: () => {
+      },
+    });
   }
 }
 

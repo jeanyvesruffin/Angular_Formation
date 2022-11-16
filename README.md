@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Repository Git
 
-https://github.com/jollivetc/angularCRM-November
+[source projet apside](https://github.com/jollivetc/angularCRM-November)
 
 
 ## Portability d'un component
@@ -41,6 +41,7 @@ https://github.com/jollivetc/angularCRM-November
 
 [event-loop](https://guide-angular.wishtack.io/ecmascript-6+/event-loop)
 
+[Creation d'un back rapide pour un poc](https://github.com/typicode/json-server)
 
 ## Back
 
