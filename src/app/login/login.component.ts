@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthentificationService} from "./authentification.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'crm-login',
@@ -10,18 +11,19 @@ import {AuthentificationService} from "./authentification.service";
 export class LoginComponent implements OnInit {
 
   errorLogin = {
-    required: 'valeur obligatoire',
+    required: 'Valeur obligatoire',
     minlength: '3 caractères sont obligatoire'
   }
   errorPassword = {
-    required: 'valeur obligatoire',
-    no$InPassword: '3 caractères sont obligatoire'
+    required: 'Valeur obligatoire',
+    no$InPassword: 'Vous ne pouvez pas utiliser le caractère $'
   }
 
 
   loginForm: FormGroup;
 
-  constructor(private authent: AuthentificationService) {
+  constructor(private authent: AuthentificationService, private router: Router) {
+    this.authent.disconnect();
     this.loginForm = new FormGroup({
       login: new FormControl('', [Validators.required, Validators.minLength(3)]),
       password: new FormControl('', [Validators.required, no$InPassword]),
@@ -34,9 +36,12 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.loginForm)
     console.log('submit', this.loginForm.value);
-    const res = this.authent.authentUser(this.loginForm.value.login,
+    const user = this.authent.authentUser(this.loginForm.value.login,
       this.loginForm.value.password);
-    console.log('authent.authentUser', res);
+    console.log('authent.authentUser', user);
+    if (user) {
+      this.router.navigateByUrl('/home');
+    }
   }
 }
 

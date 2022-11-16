@@ -30,23 +30,25 @@ describe('HelpComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should disable login button on creation', () => {
-    const element = fixture.nativeElement;
-    expect(element.querySelector('button').disabled).toBeTrue();
-  });
-  it('should activate login button when form is valid', () => {
-// getting the elements
-    const buttonElement = fixture.nativeElement.querySelector('button');
-    const loginElement = fixture.nativeElement.querySelector('input#login');
-    const passwordElement = fixture.nativeElement.querySelector('input#password');
-// setting a value
-    loginElement.value = 'login';
-    passwordElement.value = 'password';
-// trigger an event
-    loginElement.dispatchEvent(new Event('input'));
-    passwordElement.dispatchEvent(new Event('input'));
-// Ask Angular to detect changes
-    fixture.detectChanges();
-    expect(buttonElement.disabled).toBeFalse();
-  });
+
+//   it('should disable login button on creation', () => {
+//     const element = fixture.nativeElement;
+//     expect(element.querySelector('button').disabled).toBeTrue();
+//   });
+//
+//   it('should activate login button when form is valid', () => {
+// // getting the elements
+//     const buttonElement = fixture.nativeElement.querySelector('button');
+//     const loginElement = fixture.nativeElement.querySelector('input#login');
+//     const passwordElement = fixture.nativeElement.querySelector('input#password');
+// // setting a value
+//     loginElement.value = 'login';
+//     passwordElement.value = 'password';
+// // trigger an event
+//     loginElement.dispatchEvent(new Event('input'));
+//     passwordElement.dispatchEvent(new Event('input'));
+// // Ask Angular to detect changes
+//     fixture.detectChanges();
+//     expect(buttonElement.disabled).toBeFalse();
+//   });
 });
