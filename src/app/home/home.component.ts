@@ -10,6 +10,7 @@ import {map, Subscriber, Subscription, take} from "rxjs";
 export class HomeComponent implements OnInit {
 
   private subs: Subscription[] = [];
+  phoneNumber = '1234567890';
 
   constructor(private demoObservable: DemoObservableService) {
   }

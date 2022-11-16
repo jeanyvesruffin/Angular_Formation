@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthentificationService} from "./authentification.service";
 import {Router} from "@angular/router";
 import {User} from "./model/user";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'crm-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   errorLogin = {
     required: 'Valeur obligatoire',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
 
 
   loginForm: FormGroup;
+  private subs: Subscription[] = [];
 
   constructor(private authent: AuthentificationService, private router: Router) {
     this.authent.disconnect();
@@ -31,13 +33,17 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.subs.forEach(sub => sub.unsubscribe());
+  }
+
   ngOnInit(): void {
   }
 
-  login() {
+  login(): void {
     console.log(this.loginForm)
     console.log('submit', this.loginForm.value);
-    this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password).subscribe({
+    this.subs.push(this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password).subscribe({
       next: (user: User) => {
         this.router.navigateByUrl('/home');
       },
@@ -46,7 +52,7 @@ export class LoginComponent implements OnInit {
       },
       complete: () => {
       },
-    });
+    }));
   }
 }
 
