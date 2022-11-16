@@ -13,6 +13,8 @@ import {HomeComponent} from './home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JWTInterceptorService} from "./common/jwtinterceptor.service";
 import { PhonePipe } from './common/phone.pipe';
+import { ConsumerListComponent } from './consumer/consumer-list/consumer-list.component';
+import { ConsumerFicheComponent } from './consumer/consumer-fiche/consumer-fiche.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PhonePipe } from './common/phone.pipe';
     DummyComponent,
     HelpComponent,
     HomeComponent,
-    PhonePipe
+    PhonePipe,
+    ConsumerListComponent,
+    ConsumerFicheComponent
   ],
   imports: [
     BrowserModule,
