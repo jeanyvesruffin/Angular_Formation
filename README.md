@@ -46,4 +46,6 @@ https://github.com/jollivetc/angularCRM-November
 
 [Back](https://github.com/jollivetc/AngularCRM-back)
 
+[Conference pour le back rapide](https://www.youtube.com/watch?v=zZlFXga1tEg&list=PLIBWgWaHgLpObzsDNKDJmL-J_V3fHtJy7)
+
 Executer le en mode authentification, npm run start-auth.
