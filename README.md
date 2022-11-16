@@ -35,6 +35,15 @@ https://github.com/jollivetc/angularCRM-November
 
 [standalone-components](https://angular.io/guide/standalone-components)
 
-## Truc et astuce
+## Truc et astuce et ressources
 
 [Emmet](https://docs.emmet.io/cheat-sheet/)
+
+[event-loop](https://guide-angular.wishtack.io/ecmascript-6+/event-loop)
+
+
+## Back
+
+[Back](https://github.com/jollivetc/AngularCRM-back)
+
+Executer le en mode authentification, npm run start-auth.
