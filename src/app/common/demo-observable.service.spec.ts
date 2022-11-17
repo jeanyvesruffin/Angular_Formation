@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DemoObservableService } from './demo-observable.service';
-import {async} from "rxjs";
+import {DemoObservableService} from './demo-observable.service';
+
 
 describe('DemoObservableService', () => {
   let service: DemoObservableService;

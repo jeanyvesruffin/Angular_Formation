@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ConsumerService} from "../consumer.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {Consumer} from "../model/consumer";
-
-
-let searchFilter = '';
 
 @Component({
   selector: 'crm-consumer-list',
@@ -16,12 +13,17 @@ export class ConsumerListComponent implements OnInit {
   searchCriteria?: string;
   consumers: Array<Consumer> = [];
   public consumersObs?: Observable<Consumer[]>;
+  private subs: Subscription[] = [];
 
   constructor(private consumerService: ConsumerService) {
   }
 
   ngOnInit(): void {
     this.consumersObs = this.consumerService.getAll();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 
   search(): void {
@@ -32,7 +34,7 @@ export class ConsumerListComponent implements OnInit {
   delete(id: number): void {
     this.consumerService.delete(id).subscribe({
         next: () => {
-         this.search();
+          this.search();
         },
         error: (error: Error) => {
           alert(error)

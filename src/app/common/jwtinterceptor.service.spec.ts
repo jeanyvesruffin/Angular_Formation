@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { JWTInterceptorService } from './jwtinterceptor.service';
+import {JWTInterceptorService} from './jwtinterceptor.service';
 
 describe('JWTInterceptorService', () => {
   let service: JWTInterceptorService;

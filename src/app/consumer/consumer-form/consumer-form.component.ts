@@ -56,7 +56,7 @@ export class ConsumerFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(consumer: Consumer): void {
-    if(consumer.id){
+    if (consumer.id) {
       this.subs.push(this.service.update(consumer).subscribe({
         next: () => {
           this.router.navigateByUrl('/consumer-list');
@@ -67,7 +67,7 @@ export class ConsumerFormComponent implements OnInit, OnDestroy {
         complete: () => {
         }
       }))
-    }else{
+    } else {
       this.subs.push(this.service.addConsumer(consumer).subscribe({
         next: () => {
           this.router.navigateByUrl('/consumer-list');
