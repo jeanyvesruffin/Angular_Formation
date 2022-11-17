@@ -12,7 +12,7 @@ export class ConsumerService {
   }
 
   getAll(): Observable<Consumer[]> {
-    return this.http.get<Consumer[]>('/api/consumers')
+    return this.http.get<Consumer[]>('/api/consumers');
   }
 
   findForCriteria(criteria?: string): Observable<Consumer[]> {
@@ -21,6 +21,18 @@ export class ConsumerService {
 
   addConsumer(consumer:Consumer): Observable<Consumer>{
     return this.http.post<Consumer>(`/api/consumers`, consumer);
+  }
+
+  findConsumer(id:number): Observable<Consumer>{
+    return this.http.get<Consumer>(`/api/consumers/${id}`);
+  }
+
+  update(consumer:Consumer):Observable<void>{
+    return this.http.put<void>(`/api/consumers/${consumer.id}`, consumer);
+  }
+
+  delete(id:number):Observable<void>{
+    return this.http.delete<void>(`/api/consumers/${id}`);
   }
 
 }

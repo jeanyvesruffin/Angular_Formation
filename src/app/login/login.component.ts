@@ -41,10 +41,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login(): void {
-    console.log(this.loginForm)
-    console.log('submit', this.loginForm.value);
     this.subs.push(this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password).subscribe({
-      next: (user: User) => {
+      next: () => {
         this.router.navigateByUrl('/home');
       },
       error: (error: Error) => {

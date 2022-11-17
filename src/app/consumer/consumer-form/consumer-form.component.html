@@ -1,13 +1,16 @@
 <div class="consumer-form-container">
-  <form [formGroup]="consumerForm" (ngSubmit)="add(this.consumerForm.value)">
+  <form [formGroup]="consumerForm" (ngSubmit)="onSubmit(this.consumerForm.value)">
 
     <p>
-            <mat-form-field>
-      <mat-select formControlName="civility" placeholder="Civilité">
-        <mat-option value="Mr">Mr</mat-option>
-        <mat-option value="Mme">Mme</mat-option>
-      </mat-select>
-            </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="civility" placeholder="Civilité">
+          <mat-option value="Mr">Mr</mat-option>
+          <mat-option value="Mme">Mme</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <crm-help [field]="consumerForm.get('civility')!"
+                [messages]=errorCivility>
+      </crm-help>
     </p>
 
     <p>
@@ -15,29 +18,41 @@
         <mat-label for="firstname">firstname</mat-label>
         <input matInput type="text" id="firstname" formControlName="firstname">
       </mat-form-field>
+      <crm-help [field]="consumerForm.get('firstname')!"
+                [messages]=errorFirstname>
+      </crm-help>
     </p>
     <p>
       <mat-form-field>
         <mat-label for="lastname">lastname</mat-label>
         <input matInput type="text" id="lastname" formControlName="lastname">
       </mat-form-field>
+      <crm-help [field]="consumerForm.get('lastname')!"
+                [messages]=errorLastname>
+      </crm-help>
     </p>
     <p>
       <mat-form-field>
         <mat-label for="email">email</mat-label>
-        <input matInput type="text" id="email" formControlName="email">
+        <input matInput type="email" id="email" formControlName="email">
       </mat-form-field>
+      <crm-help [field]="consumerForm.get('email')!"
+                [messages]=errorEmail>
+      </crm-help>
     </p>
     <p>
       <mat-form-field>
         <mat-label for="phone">phone</mat-label>
         <input matInput type="text" id="phone" formControlName="phone">
       </mat-form-field>
+      <crm-help [field]="consumerForm.get('phone')!"
+                [messages]=errorPhone>
+      </crm-help>
     </p>
 
-
     <p>
-      <button mat-button type="submit" [disabled]="consumerForm.invalid" color="primary">Create new person</button>
+      <button mat-button type="submit" [disabled]="consumerForm.invalid" color="primary"><mat-icon>done</mat-icon></button>
+      <button mat-icon-button matTooltip="Annuler" color="warn" type="button" (click)="cancel()" ><mat-icon>cancel</mat-icon></button>
     </p>
 
   </form>

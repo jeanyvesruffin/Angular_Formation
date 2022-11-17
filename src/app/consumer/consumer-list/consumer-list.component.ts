@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {Consumer} from "../model/consumer";
 
 
+let searchFilter = '';
+
 @Component({
   selector: 'crm-consumer-list',
   templateUrl: './consumer-list.component.html',
@@ -22,9 +24,22 @@ export class ConsumerListComponent implements OnInit {
     this.consumersObs = this.consumerService.getAll();
   }
 
-
   search(): void {
     this.consumersObs = this.consumerService.findForCriteria(this.searchCriteria!);
     console.log(this.searchCriteria);
+  }
+
+  delete(id: number): void {
+    this.consumerService.delete(id).subscribe({
+        next: () => {
+         this.search();
+        },
+        error: (error: Error) => {
+          alert(error)
+        },
+        complete: () => {
+        }
+      }
+    )
   }
 }

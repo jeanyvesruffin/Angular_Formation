@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Repository Git
 
-[source projet apside](https://github.com/jollivetc/angularCRM-November)
+[source projet apside](https://github.com/jollivetc/AngularCRM)
 
 
 ## Portability d'un component
