@@ -43,6 +43,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [Creation d'un back rapide pour un poc](https://github.com/typicode/json-server)
 
+[etude fuite memoire](https://kgotgit.medium.com/rxjs-subject-subscription-heap-memory-analysis-909dc173a613)
+
+Utilisation de JSTOJSON pour faire les interface
+
 ## Back
 
 [Back](https://github.com/jollivetc/AngularCRM-back)
@@ -50,3 +54,25 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 [Conference pour le back rapide](https://www.youtube.com/watch?v=zZlFXga1tEg&list=PLIBWgWaHgLpObzsDNKDJmL-J_V3fHtJy7)
 
 Executer le en mode authentification, npm run start-auth.
+
+
+## TODO
+container docker keyclock
+Voir evenement sur le component de loging si ok c'est bon redirige .
+Component loging + service qu'il peuvent recupere les niverau de privilege.
+user que l'on fournis au autre ? comment on creer l'user.
+avec les droits.
+Pour gerer les code errerur HTPP utiliser des interceptors
+
+
+## API
+
+/api/consumers
+GET /api/consumers => tous les consumers
+GET /api/consumers/12 => consumer id 12
+POST /api/consumers => créé un consumer
+PUT /api/consumers/12 => met à jour le consumer 12
+DELETE /api/consumers/12 => supprime le consumer 12
+DELETE /api/consumers => supprime tous les consumers
+PATCH  /api/consumers/12 => mise à jour du consumer 12 envoie que la modif
+HEADERS /api/consumers/12 => renvoie les entêtes

@@ -1,1 +1,32 @@
-<p>consumer-list works!</p>
+<input [(ngModel)]="searchCriteria" (keyup)="search()">
+<a matTooltip="Consumer forme"
+   routerLink="/consumer-form"
+   [routerLinkActive]="'is-active'">
+  <mat-icon>person_add</mat-icon>
+</a>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>civility</th>
+    <th>firstname</th>
+    <th>lastname</th>
+    <th>email</th>
+    <th>phone</th>
+    <th>createdAt</th>
+    <th>updatedAt</th>
+  </tr>
+  <tr *ngFor="let consumer of consumersObs| async">
+    <td>{{consumer.id}}</td>
+    <td>{{consumer.civility}}</td>
+    <td>{{consumer.firstname}}</td>
+    <td>{{consumer.lastname}}</td>
+    <td>{{consumer.email}}</td>
+    <td>{{consumer.phone | phone}}</td>
+    <td>{{consumer.createdAt | date}}</td>
+    <td>{{consumer.updatedAt | date}}</td>
+  </tr>
+</table>
+
+
+<!--{{consumersObs | async | json}}-->

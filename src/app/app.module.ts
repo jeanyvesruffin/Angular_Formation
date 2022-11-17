@@ -1,7 +1,10 @@
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatTableModule} from "@angular/material/table";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -10,11 +13,11 @@ import {AppMaterialModule} from './app-material.module';
 import {DummyComponent} from './component/dummy/dummy.component';
 import {HelpComponent} from './component/help/help.component';
 import {HomeComponent} from './home/home.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JWTInterceptorService} from "./common/jwtinterceptor.service";
-import { PhonePipe } from './common/phone.pipe';
-import { ConsumerListComponent } from './consumer/consumer-list/consumer-list.component';
-import { ConsumerFicheComponent } from './consumer/consumer-fiche/consumer-fiche.component';
+import {PhonePipe} from './common/phone.pipe';
+import {ConsumerListComponent} from './consumer/consumer-list/consumer-list.component';
+import {ConsumerFormComponent} from './consumer/consumer-form/consumer-form.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { ConsumerFicheComponent } from './consumer/consumer-fiche/consumer-fiche
     HomeComponent,
     PhonePipe,
     ConsumerListComponent,
-    ConsumerFicheComponent
+    ConsumerFormComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +36,14 @@ import { ConsumerFicheComponent } from './consumer/consumer-fiche/consumer-fiche
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    FormsModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS, useClass: JWTInterceptorService, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass: JWTInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

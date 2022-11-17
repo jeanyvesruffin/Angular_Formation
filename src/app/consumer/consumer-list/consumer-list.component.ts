@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ConsumerService} from "../consumer.service";
+import {Observable} from "rxjs";
+import {Consumer} from "../model/consumer";
+
 
 @Component({
   selector: 'crm-consumer-list',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsumerListComponent implements OnInit {
 
-  constructor() { }
+  searchCriteria?: string;
+  consumers: Array<Consumer> = [];
+  public consumersObs?: Observable<Consumer[]>;
 
-  ngOnInit(): void {
+  constructor(private consumerService: ConsumerService) {
   }
 
+  ngOnInit(): void {
+    this.consumersObs = this.consumerService.getAll();
+  }
+
+
+  search(): void {
+    this.consumersObs = this.consumerService.findForCriteria(this.searchCriteria!);
+    console.log(this.searchCriteria);
+  }
 }
